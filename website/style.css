@@ -1,65 +1,59 @@
-
-/* Global text settings */
-body {
-    font-family: "Times New Roman", Times, serif;
-    max-width: 900px;
-    margin: 40px auto;
-    color: #111;
-    font-size: 16px;
-    line-height: 1.45;
-}
-
-/* Centre key structural elements only */
+/* Centre key text blocks */
 header,
 header p,
 section h2,
-nav,
+.topnav-inner,
 footer p {
-    text-align: center;
+  text-align: center;
 }
 
-/* Headings */
+/* Page typography + width */
+body {
+  font-family: "Times New Roman", Times, serif;
+  max-width: 900px;
+  margin: 28px auto;         /* tighter than 40px */
+  padding: 0 18px;           /* small side padding on mobile */
+  color: #111;
+
+  font-size: 15px;           /* slightly smaller */
+  line-height: 1.38;         /* tighter vertically */
+}
+
+/* Headings (academic, not oversized) */
 h1 {
-    font-weight: normal;
-    font-size: 36px;
-    margin-bottom: 12px;
+  font-weight: normal;
+  font-size: 30px;
+  margin: 0 0 8px 0;
 }
 
 h2 {
-    font-weight: normal;
-    font-size: 22px;
-    margin: 18px 0 10px;
+  font-weight: normal;
+  font-size: 22px;
+  margin: 22px 0 10px 0;
 }
 
-/* Navigation */
+p {
+  margin: 8px 0;
+}
+
+/* Navigation spacing */
 nav {
-    margin: 18px 0;
+  margin: 12px 0 18px 0;
 }
 
 nav a {
-    margin: 0 10px;
-    text-decoration: none;
-    color: #000;
+  margin: 0 10px;
+  text-decoration: none;
+  color: #000;
 }
 
 nav a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
-/* Horizontal separators */
+/* Thin divider line */
 hr {
-    border: none;
-    border-top: 1px solid #aaa;
-    margin: 20px 0;
-}
-
-/* Paragraphs and lists – tighter spacing */
-p {
-    margin: 8px auto;
-    max-width: 75ch;
-}
-
-ul {
-    margin: 6px auto 0;
-    max-width: 70ch;
+  border: none;
+  border-top: 1px solid #aaa;
+  margin: 18px 0;            /* tighter */
 }

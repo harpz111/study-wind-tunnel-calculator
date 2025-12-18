@@ -1,100 +1,260 @@
-<!DOCTYPE html>
-<html lang="en">
+<!doctype html>
+<html lang="en-GB">
 <head>
-  <meta charset="UTF-8">
-  <title>Study Wind Tunnel Calculator</title>
+  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Study Wind Tunnel Calculator</title>
   <style>
-    body {
-      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
-      max-width: 900px;
-      margin: 40px auto;
-      padding: 0 20px;
-      line-height: 1.6;
-      color: #222;
+    /* Academic, restrained, serif-first */
+    :root { color-scheme: light; }
+    html { scroll-behavior: smooth; }
+    body{
+      margin:0;
+      padding:0;
+      font-family: "Georgia","Times New Roman",Times,serif;
+      font-size: 18px;
+      line-height: 1.55;
+      color:#111;
+      background:#fff;
     }
-    h1, h2 {
-      color: #0b3c5d;
+    main{
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 48px 24px 72px;
     }
-    .box {
-      background: #f5f7fa;
-      padding: 20px;
-      border-left: 4px solid #0b3c5d;
-      margin: 20px 0;
+    header h1{
+      font-size: 44px;
+      font-weight: 700;
+      margin: 0 0 10px 0;
     }
-    a.button {
-      display: inline-block;
-      padding: 12px 18px;
-      background: #0b3c5d;
-      color: white;
+    header p{
+      margin: 0 0 18px 0;
+      max-width: 75ch;
+    }
+
+    /* Simple top bar navigation, no colour, no boxes */
+    .topnav{
+      position: sticky;
+      top: 0;
+      background: #fff;
+      border-bottom: 1px solid #ddd;
+      z-index: 10;
+    }
+    .topnav-inner{
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 10px 24px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: baseline;
+    }
+    .topnav a{
+      color:#111;
       text-decoration: none;
-      border-radius: 4px;
-      margin-top: 10px;
+      border-bottom: 1px solid transparent;
+      padding: 2px 0;
+      font-size: 16px;
     }
-    footer {
-      margin-top: 60px;
-      font-size: 0.9em;
-      color: #555;
+    .topnav a:hover{ border-bottom-color:#111; }
+
+    hr{
+      border:0;
+      border-top:1px solid #ddd;
+      margin: 22px 0 26px;
+    }
+
+    section{ padding-top: 10px; }
+    section h2{
+      font-size: 26px;
+      margin: 0 0 10px 0;
+      font-weight: 700;
+    }
+    p{ max-width: 80ch; }
+    ul{ margin: 10px 0 0 22px; }
+
+    footer{
+      margin-top: 36px;
+      font-size: 15px;
+      color:#222;
+    }
+
+    /* Download link styled like plain academic link */
+    .download a{
+      color:#111;
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+    }
+
+    /* Small helper text */
+    .note{
+      font-size: 16px;
+      margin-top: 10px;
     }
   </style>
 </head>
+
 <body>
+  <div class="topnav">
+    <div class="topnav-inner">
+      <a href="#overview">Overview</a>
+      <a href="#method">Method</a>
+      <a href="#use">Intended use</a>
+      <a href="#limitations">Limitations</a>
+      <a href="#references">References</a>
+      <a href="#download">Download</a>
+    </div>
+  </div>
 
-<h1>Study Wind Tunnel Calculator</h1>
+  <main>
+    <header>
+      <h1>Study Wind Tunnel Calculator</h1>
+      <p>
+        Preliminary sizing method for open-circuit, low-speed wind tunnels.
+      </p>
+    </header>
 
-<p>
-A preliminary sizing tool for <strong>open-circuit, low-speed wind tunnels</strong>,
-intended for students, hobbyists, and universities performing early-stage feasibility
-and layout studies.
-</p>
+    <hr>
 
-<div class="box">
-  <h2>What this tool does</h2>
-  <ul>
-    <li>Links all tunnel sections back to the test section</li>
-    <li>Computes local Mach number, Reynolds number, and friction factor</li>
-    <li>Applies empirical loss correlations from established wind-tunnel literature</li>
-    <li>Forms a total loss coefficient and energy ratio</li>
-    <li>Estimates total pressure drop and required fan power</li>
-  </ul>
-</div>
+    <section id="overview">
+      <h2>Overview</h2>
 
-<div class="box">
-  <h2>Intended use</h2>
-  <p>
-  This tool is intended for <strong>rough preliminary sizing only</strong>.
-  It is not a replacement for detailed design, CFD, or experimental validation.
-  </p>
-</div>
+      <p>
+        This tool implements a simplified but physically consistent method for the
+        <em>preliminary sizing of open-circuit, low-speed wind tunnels</em>.
+        All tunnel sections are defined relative to the test section, which serves as
+        the reference for flow conditions, loss coefficients, and power scaling.
+      </p>
 
-<div class="box">
-  <h2>Download</h2>
-  <p>
-  A compiled executable (Windows) will be provided via GitHub Releases.
-  </p>
-  <a class="button" href="#">Download (coming soon)</a>
-</div>
+      <p>
+        For a specified test-section Mach number and geometry, the method propagates
+        flow conditions upstream and downstream through the contraction and diffuser.
+        Section-by-section losses are evaluated using empirical correlations from the
+        wind-tunnel literature and combined into a single total loss coefficient.
+      </p>
 
-<div class="box">
-  <h2>Source & references</h2>
-  <p>
-  The tool is based on standard wind-tunnel design texts and supporting NASA reports.
-  A full reference list will be added once development stabilises.
-  </p>
-  <p>
-    GitHub repository:<br>
-    <a href="https://github.com/harpz111/study-wind-tunnel-calculator">
-      https://github.com/harpz111/study-wind-tunnel-calculator
-    </a>
-  </p>
-</div>
+      <p>
+        The total loss coefficient is used to define an energy ratio, which provides a
+        direct link between test-section dynamic pressure and the overall pressure
+        losses of the tunnel. This allows the required fan power to be estimated in a
+        consistent and transparent manner.
+      </p>
+    </section>
 
-<footer>
-  <p>
-    © Hamza — preliminary engineering tool.  
-    Use at your own risk.
-  </p>
-</footer>
+    <hr>
 
+    <section id="method">
+      <h2>Method</h2>
+
+      <p>
+        The tunnel is modelled as three primary sections:
+      </p>
+
+      <ul>
+        <li>Contraction</li>
+        <li>Test section</li>
+        <li>Diffuser</li>
+      </ul>
+
+      <p>
+        For each section, the local Mach number, Reynolds number, and Darcy friction
+        factor are evaluated based on the local cross-sectional area and length.
+        Loss coefficients for the contraction, test section, and diffuser are then
+        computed using established empirical correlations.
+      </p>
+
+      <p>
+        All losses are referenced to the test-section dynamic pressure, allowing them
+        to be summed into a single total loss coefficient for the tunnel. The energy
+        ratio is defined as the inverse of this total loss coefficient and is used to
+        estimate the total pressure drop and motor power required to achieve the
+        specified test-section conditions.
+      </p>
+    </section>
+
+    <hr>
+
+    <section id="use">
+      <h2>Intended use</h2>
+
+      <p>
+        This tool is intended for <strong>rough preliminary sizing only</strong>.
+        It is suitable for early-stage feasibility studies, comparison of candidate
+        tunnel geometries, and estimation of overall tunnel length, footprint, and
+        order-of-magnitude fan power requirements.
+      </p>
+
+      <p>
+        The tool is aimed at students, hobbyists, and academic users who wish to explore
+        the implications of test-section requirements on overall tunnel sizing using
+        standard relations from the wind tunnel design literature.
+      </p>
+    </section>
+
+    <hr>
+
+    <section id="limitations">
+      <h2>Limitations</h2>
+
+      <p>
+        The model does not include losses associated with screens, honeycombs, corners,
+        fan performance curves, inlet or exit effects, acoustic considerations, or
+        structural constraints.
+      </p>
+
+      <p>
+        Boundary-layer blockage is treated using standard empirical correlations and
+        should be checked against their stated validity limits. The tool does not
+        replace detailed CFD analysis, structural design, or experimental validation.
+      </p>
+    </section>
+
+    <hr>
+
+    <section id="references">
+      <h2>References</h2>
+
+      <p>
+        The formulation implemented in this tool is based on standard low-speed wind
+        tunnel design textbooks and supporting technical reports, including empirical
+        loss correlations for contractions and diffusers.
+      </p>
+
+      <p>
+        A full list of references will be provided once the tool and accompanying
+        documentation are finalised.
+      </p>
+    </section>
+
+    <hr>
+
+    <section id="download" class="download">
+      <h2>Download</h2>
+
+      <p>
+        The current version of the Study Wind Tunnel Calculator is distributed as a
+        standalone executable generated from a Python implementation of the method.
+      </p>
+
+      <p class="note">
+        <strong>Latest release:</strong>
+        <a href="#" title="Replace this with your GitHub release asset link">Download (Windows)</a>
+        &nbsp;|&nbsp;
+        <a href="#" title="Replace this with your GitHub repository link">GitHub repository</a>
+      </p>
+
+      <p class="note">
+        Add a short changelog here once you start publishing versioned releases.
+      </p>
+    </section>
+
+    <footer>
+      <hr>
+      <p>
+        © Study Wind Tunnel Calculator — preliminary sizing tool for educational and early-stage feasibility use.
+      </p>
+    </footer>
+  </main>
 </body>
 </html>

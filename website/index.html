@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Study Wind Tunnel Calculator</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 20px;
+      line-height: 1.6;
+      color: #222;
+    }
+    h1, h2 {
+      color: #0b3c5d;
+    }
+    .box {
+      background: #f5f7fa;
+      padding: 20px;
+      border-left: 4px solid #0b3c5d;
+      margin: 20px 0;
+    }
+    a.button {
+      display: inline-block;
+      padding: 12px 18px;
+      background: #0b3c5d;
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
+      margin-top: 10px;
+    }
+    footer {
+      margin-top: 60px;
+      font-size: 0.9em;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Study Wind Tunnel Calculator</h1>
+
+<p>
+A preliminary sizing tool for <strong>open-circuit, low-speed wind tunnels</strong>,
+intended for students, hobbyists, and universities performing early-stage feasibility
+and layout studies.
+</p>
+
+<div class="box">
+  <h2>What this tool does</h2>
+  <ul>
+    <li>Links all tunnel sections back to the test section</li>
+    <li>Computes local Mach number, Reynolds number, and friction factor</li>
+    <li>Applies empirical loss correlations from established wind-tunnel literature</li>
+    <li>Forms a total loss coefficient and energy ratio</li>
+    <li>Estimates total pressure drop and required fan power</li>
+  </ul>
+</div>
+
+<div class="box">
+  <h2>Intended use</h2>
+  <p>
+  This tool is intended for <strong>rough preliminary sizing only</strong>.
+  It is not a replacement for detailed design, CFD, or experimental validation.
+  </p>
+</div>
+
+<div class="box">
+  <h2>Download</h2>
+  <p>
+  A compiled executable (Windows) will be provided via GitHub Releases.
+  </p>
+  <a class="button" href="#">Download (coming soon)</a>
+</div>
+
+<div class="box">
+  <h2>Source & references</h2>
+  <p>
+  The tool is based on standard wind-tunnel design texts and supporting NASA reports.
+  A full reference list will be added once development stabilises.
+  </p>
+  <p>
+    GitHub repository:<br>
+    <a href="https://github.com/harpz111/study-wind-tunnel-calculator">
+      https://github.com/harpz111/study-wind-tunnel-calculator
+    </a>
+  </p>
+</div>
+
+<footer>
+  <p>
+    © Hamza — preliminary engineering tool.  
+    Use at your own risk.
+  </p>
+</footer>
+
+</body>
+</html>

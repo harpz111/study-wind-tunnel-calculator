@@ -3,46 +3,95 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Hamza H</title>
+  <title>EasyTunnel</title>
+
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
   <div class="topnav">
     <div class="topnav-inner">
-      <a href="#home">Home</a>
-      <a href="#about">About</a>
-      <a href="#cfd">CFD Notes</a>
-      <a href="easytunnel.html">EasyTunnel</a>
+      <a href="index.html">Home</a>
+      <a href="#overview">Overview</a>
+      <a href="#method">Method</a>
+      <a href="#assumptions">Assumptions</a>
+      <a href="#use">Use</a>
+      <a href="#limitations">Limitations</a>
+      <a href="#download">Download</a>
     </div>
   </div>
 
   <main>
-    <header id="home">
-      <h1>Hamza H</h1>
-      <p>Aerospace engineering · CFD · notes</p>
+    <header>
+      <h1>EasyTunnel</h1>
+      <p>Preliminary sizing tool for low-speed wind tunnels</p>
     </header>
 
     <hr>
 
-    <section id="about">
-      <h2>About</h2>
+    <section id="overview">
+      <h2>Overview</h2>
       <p>
-        I am interested in aerospace engineering, fluid mechanics, computational fluid dynamics,
-        and numerical methods. This site is a place to keep notes and work.
+        This tool performs preliminary sizing of open-circuit, low-speed wind tunnels.
+        It estimates losses, energy ratio, and required power based on test-section inputs.
       </p>
     </section>
 
     <hr>
 
-    <section id="cfd">
-      <h2>CFD Notes</h2>
-      <p><a href="cfd-notes.html">Open CFD Notes</a></p>
+    <section id="method">
+      <h2>Method</h2>
+      <p>
+        The tunnel is modelled as contraction, test section, and diffuser.
+        Losses are calculated using empirical correlations and summed.
+      </p>
+    </section>
+
+    <hr>
+
+    <section id="assumptions">
+      <h2>Assumptions</h2>
+      <ul>
+        <li>Low-speed, subsonic flow</li>
+        <li>Steady flow</li>
+        <li>Empirical loss correlations</li>
+      </ul>
+    </section>
+
+    <hr>
+
+    <section id="use">
+      <h2>Use</h2>
+      <p>
+        Intended for preliminary sizing and feasibility studies only.
+      </p>
+    </section>
+
+    <hr>
+
+    <section id="limitations">
+      <h2>Limitations</h2>
+      <ul>
+        <li>No fan curves</li>
+        <li>No detailed CFD</li>
+        <li>Approximate correlations</li>
+      </ul>
+    </section>
+
+    <hr>
+
+    <section id="download">
+      <h2>Download</h2>
+      <p>
+        <a href="https://github.com/harpz111/study-wind-tunnel-calculator/releases/download/v0.1/StudyWindTunnelCalculator.v.0.1.zip">
+          Download tool
+        </a>
+      </p>
     </section>
 
     <footer>
       <hr>
-      <p>© Hamza H</p>
+      <p>EasyTunnel</p>
     </footer>
   </main>
 </body>

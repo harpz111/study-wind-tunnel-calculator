@@ -1,115 +1,192 @@
-:root { color-scheme: light; }
-html { scroll-behaviour: smooth; } /* UK spelling won't work in CSS; keep property name as-is below */
-html { scroll-behavior: smooth; }
+:root {
+  color-scheme: light;
+}
+
+html {
+  scroll-behavior: smooth;
+}
 
 body {
   margin: 0;
   padding: 0;
-  font-family: "Georgia", "Times New Roman", Times, serif;
-  font-size: 14.8px;
-  line-height: 1.38;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  font-size: 15px;
+  line-height: 1.55;
   color: #111;
-  background: #fff;
+  background: #fcfcfa;
 }
 
 main {
-  max-width: 1040px;     /* wider, more like technical docs */
+  max-width: 1080px;
   margin: 0 auto;
-  padding: 34px 24px 56px;
-}
-
-header h1 {
-  font-size: 34px;
-  font-weight: 600;      /* not heavy */
-  margin: 0 0 6px 0;
-  text-align: center;
-}
-
-.subtitle {
-  margin: 0 0 6px 0;
-  text-align: center;
-}
-
-.meta {
-  margin: 0;
-  font-size: 13.2px;
-  text-align: center;
+  padding: 36px 24px 60px;
 }
 
 .topnav {
   position: sticky;
   top: 0;
-  background: #fff;
+  background: rgba(252, 252, 250, 0.97);
   border-bottom: 1px solid #ddd;
-  z-index: 10;
+  z-index: 100;
+  backdrop-filter: blur(8px);
 }
 
 .topnav-inner {
-  max-width: 1040px;
+  max-width: 1080px;
   margin: 0 auto;
-  padding: 8px 24px;
+  padding: 10px 24px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 14px;
-  align-items: baseline;
 }
 
 .topnav a {
   color: #111;
   text-decoration: none;
-  border-bottom: 1px solid transparent;
-  padding: 2px 0;
   font-size: 13.8px;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 2px;
 }
 
-.topnav a:hover { border-bottom-color: #111; }
+.topnav a:hover {
+  border-bottom-color: #111;
+}
+
+.hero {
+  padding-top: 18px;
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 12px;
+  margin: 0 0 10px 0;
+  text-align: center;
+  color: #555;
+}
+
+header h1 {
+  font-size: 40px;
+  font-weight: 600;
+  margin: 0 0 10px 0;
+  text-align: center;
+}
+
+.subtitle {
+  margin: 0 0 10px 0;
+  text-align: center;
+  font-size: 18px;
+}
+
+.intro {
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+  color: #222;
+}
 
 hr {
   border: 0;
   border-top: 1px solid #ddd;
-  margin: 18px 0 18px;
+  margin: 26px 0;
 }
 
 section {
-  padding-top: 6px;
+  scroll-margin-top: 90px;
 }
 
 section h2 {
-  font-size: 17.5px;
+  font-size: 24px;
+  margin: 0 0 12px 0;
   font-weight: 600;
+}
+
+h3 {
+  font-size: 18px;
   margin: 0 0 8px 0;
 }
 
 p {
-  margin: 8px 0;
-  max-width: none;       /* let text use the column */
+  margin: 10px 0;
 }
 
-ul {
-  margin: 6px 0 0 18px;
+ul,
+ol {
+  margin: 10px 0 0 22px;
+  padding: 0;
 }
 
 li {
-  margin: 3px 0;
+  margin: 6px 0;
 }
 
-.note {
-  font-size: 13.6px;
-  margin-top: 10px;
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+  margin-top: 12px;
 }
 
-.download a,
-.note a {
+.card {
+  border: 1px solid #ddd;
+  background: #fff;
+  padding: 18px;
+  border-radius: 10px;
+}
+
+.project-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.button-link {
+  display: inline-block;
+  padding: 10px 14px;
+  border: 1px solid #111;
+  border-radius: 8px;
+  text-decoration: none;
   color: #111;
-  text-decoration: underline;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 3px;
+  font-size: 14px;
+}
+
+.button-link:hover {
+  background: #111;
+  color: #fff;
+}
+
+.book-list,
+.top-list {
+  max-width: 700px;
+}
+
+.small-note {
+  font-size: 13.5px;
+  color: #444;
 }
 
 footer {
-  margin-top: 26px;
-  font-size: 12.8px;
-  color: #222;
+  margin-top: 30px;
   text-align: center;
+  font-size: 13px;
+  color: #333;
+}
+
+@media (max-width: 700px) {
+  main {
+    padding: 28px 18px 50px;
+  }
+
+  header h1 {
+    font-size: 32px;
+  }
+
+  .subtitle {
+    font-size: 16px;
+  }
+
+  section h2 {
+    font-size: 22px;
+  }
 }

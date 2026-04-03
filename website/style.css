@@ -1,7 +1,3 @@
-:root {
-  color-scheme: light;
-}
-
 html {
   scroll-behavior: smooth;
 }
@@ -9,184 +5,125 @@ html {
 body {
   margin: 0;
   padding: 0;
-  font-family: Georgia, "Times New Roman", Times, serif;
-  font-size: 15px;
-  line-height: 1.55;
-  color: #111;
-  background: #fcfcfa;
+  background: #ffffff;
+  color: #000000;
+  font-family: "Times New Roman", Times, serif;
+  font-size: 16px;
+  line-height: 1.5;
 }
 
 main {
-  max-width: 1080px;
+  max-width: 860px;
   margin: 0 auto;
-  padding: 36px 24px 60px;
+  padding: 28px 20px 48px;
 }
 
 .topnav {
   position: sticky;
   top: 0;
-  background: rgba(252, 252, 250, 0.97);
-  border-bottom: 1px solid #ddd;
-  z-index: 100;
-  backdrop-filter: blur(8px);
+  background: #ffffff;
+  border-bottom: 1px solid #000000;
 }
 
 .topnav-inner {
-  max-width: 1080px;
+  max-width: 860px;
   margin: 0 auto;
-  padding: 10px 24px;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 14px;
+  padding: 8px 20px;
 }
 
 .topnav a {
-  color: #111;
+  color: #000000;
   text-decoration: none;
-  font-size: 13.8px;
-  border-bottom: 1px solid transparent;
-  padding-bottom: 2px;
+  margin-right: 16px;
+  font-size: 14px;
 }
 
 .topnav a:hover {
-  border-bottom-color: #111;
+  text-decoration: underline;
 }
 
-.hero {
-  padding-top: 18px;
-}
-
-.eyebrow {
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  font-size: 12px;
-  margin: 0 0 10px 0;
-  text-align: center;
-  color: #555;
+header {
+  margin-bottom: 20px;
 }
 
 header h1 {
-  font-size: 40px;
-  font-weight: 600;
-  margin: 0 0 10px 0;
-  text-align: center;
-}
-
-.subtitle {
-  margin: 0 0 10px 0;
-  text-align: center;
-  font-size: 18px;
-}
-
-.intro {
-  max-width: 720px;
-  margin: 0 auto;
-  text-align: center;
-  color: #222;
-}
-
-hr {
-  border: 0;
-  border-top: 1px solid #ddd;
-  margin: 26px 0;
-}
-
-section {
-  scroll-margin-top: 90px;
-}
-
-section h2 {
-  font-size: 24px;
-  margin: 0 0 12px 0;
-  font-weight: 600;
-}
-
-h3 {
-  font-size: 18px;
+  font-size: 30px;
+  font-weight: normal;
   margin: 0 0 8px 0;
 }
 
+.subtitle,
+.intro,
+.meta {
+  margin: 6px 0;
+}
+
+section {
+  margin: 24px 0;
+  scroll-margin-top: 70px;
+}
+
+section h2 {
+  font-size: 20px;
+  font-weight: normal;
+  margin: 0 0 10px 0;
+}
+
+h3 {
+  font-size: 17px;
+  font-weight: normal;
+  margin: 14px 0 6px 0;
+}
+
 p {
-  margin: 10px 0;
+  margin: 8px 0;
 }
 
 ul,
 ol {
-  margin: 10px 0 0 22px;
+  margin: 8px 0 8px 22px;
   padding: 0;
 }
 
 li {
-  margin: 6px 0;
+  margin: 4px 0;
 }
 
-.card-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 16px;
-  margin-top: 12px;
+hr {
+  border: 0;
+  border-top: 1px solid #000000;
+  margin: 18px 0;
 }
 
-.card {
-  border: 1px solid #ddd;
-  background: #fff;
-  padding: 18px;
-  border-radius: 10px;
+a {
+  color: #000000;
 }
 
-.project-card {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+a:hover {
+  text-decoration: underline;
 }
 
 .button-link {
-  display: inline-block;
-  padding: 10px 14px;
-  border: 1px solid #111;
-  border-radius: 8px;
-  text-decoration: none;
-  color: #111;
-  font-size: 14px;
+  display: inline;
+  border: none;
+  padding: 0;
+  text-decoration: underline;
 }
 
-.button-link:hover {
-  background: #111;
-  color: #fff;
+.pdf-embed {
+  width: 100%;
+  height: 80vh;
+  border: 1px solid #000000;
+  margin-top: 12px;
 }
 
-.book-list,
-.top-list {
-  max-width: 700px;
-}
-
-.small-note {
-  font-size: 13.5px;
-  color: #444;
+.pdf-embed iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
 }
 
 footer {
   margin-top: 30px;
-  text-align: center;
-  font-size: 13px;
-  color: #333;
-}
-
-@media (max-width: 700px) {
-  main {
-    padding: 28px 18px 50px;
-  }
-
-  header h1 {
-    font-size: 32px;
-  }
-
-  .subtitle {
-    font-size: 16px;
-  }
-
-  section h2 {
-    font-size: 22px;
-  }
+  font-size: 14px;
 }

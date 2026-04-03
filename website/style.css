@@ -1,66 +1,127 @@
-html {
-  scroll-behavior: smooth;
-}
+:root { color-scheme: light; }
+
+html { scroll-behavior: smooth; }
 
 body {
   margin: 0;
+  padding: 0;
+  font-family: "Georgia", "Times New Roman", Times, serif;
+  font-size: 14.8px;
+  line-height: 1.38;
+  color: #111;
   background: #fff;
-  color: #000;
-  font-family: "Times New Roman", serif;
-  font-size: 16px;
-  line-height: 1.5;
 }
 
 main {
-  max-width: 800px;
+  max-width: 1040px;
   margin: 0 auto;
-  padding: 30px 20px;
+  padding: 34px 24px 56px;
+}
+
+header h1 {
+  font-size: 34px;
+  font-weight: 600;
+  margin: 0 0 6px 0;
+  text-align: center;
+}
+
+.subtitle {
+  margin: 0 0 6px 0;
+  text-align: center;
+}
+
+.meta {
+  margin: 0;
+  font-size: 13.2px;
+  text-align: center;
 }
 
 .topnav {
-  border-bottom: 1px solid #000;
+  position: sticky;
+  top: 0;
+  background: #fff;
+  border-bottom: 1px solid #ddd;
+  z-index: 10;
 }
 
 .topnav-inner {
-  max-width: 800px;
+  max-width: 1040px;
   margin: 0 auto;
-  padding: 8px 20px;
+  padding: 8px 24px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+  align-items: baseline;
 }
 
 .topnav a {
-  margin-right: 15px;
+  color: #111;
   text-decoration: none;
-  color: #000;
+  border-bottom: 1px solid transparent;
+  padding: 2px 0;
+  font-size: 13.8px;
 }
 
 .topnav a:hover {
-  text-decoration: underline;
-}
-
-h1 {
-  font-weight: normal;
-  font-size: 28px;
-}
-
-h2 {
-  font-weight: normal;
-  font-size: 20px;
+  border-bottom-color: #111;
 }
 
 hr {
-  border: none;
-  border-top: 1px solid #000;
-  margin: 20px 0;
+  border: 0;
+  border-top: 1px solid #ddd;
+  margin: 18px 0 18px;
 }
 
-a {
-  color: #000;
+section {
+  padding-top: 6px;
+}
+
+section h2 {
+  font-size: 17.5px;
+  font-weight: 600;
+  margin: 0 0 8px 0;
+}
+
+p {
+  margin: 8px 0;
+  max-width: none;
+}
+
+ul {
+  margin: 6px 0 0 18px;
+}
+
+li {
+  margin: 3px 0;
+}
+
+.note {
+  font-size: 13.6px;
+  margin-top: 10px;
+}
+
+.download a,
+.note a {
+  color: #111;
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 3px;
+}
+
+footer {
+  margin-top: 26px;
+  font-size: 12.8px;
+  color: #222;
+  text-align: center;
 }
 
 .pdf-embed {
+  width: 100%;
   height: 80vh;
-  border: 1px solid #000;
-  margin-top: 10px;
+  border: 1px solid #ddd;
+  margin-top: 12px;
+  background: #fff;
 }
 
 .pdf-embed iframe {

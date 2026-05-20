@@ -3,175 +3,204 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Study Wind Tunnel Calculator</title>
+  <title>EasyTunnel — Study Wind Tunnel Calculator</title>
+  <meta name="description" content="EasyTunnel is a preliminary sizing calculator for low-speed open-circuit wind tunnels.">
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-  <div class="topnav" role="navigation" aria-label="Section navigation">
-    <div class="topnav-inner">
-      <a href="index.html">Home</a>
-      <a href="https://harpz111.github.io/hamza-personal-site/" target="_blank" rel="noopener">Personal Site</a>
-      <a href="#overview">Overview</a>
-      <a href="#method">Method</a>
-      <a href="#assumptions">Assumptions</a>
-      <a href="#use">Intended use</a>
-      <a href="#limitations">Limitations</a>
-      <a href="#references">References</a>
-      <a href="#download">Download</a>
+  <div id="site">
+
+    <div id="credit-strip">
+      EasyTunnel is free to use. If it helps your work, I would appreciate a mention.
+      Created by <a href="https://harpz111.github.io/hamza-personal-site/" target="_blank" rel="noopener">Hamza H</a>.
     </div>
-  </div>
 
-  <main>
-    <header>
-      <h1>Study Wind Tunnel Calculator</h1>
-
-      <p class="subtitle">
-        Preliminary sizing tool for open-circuit, low-speed wind tunnels.
-      </p>
-
-      <p class="meta">
-        Version 0.1 · Windows executable · Python implementation · Last updated: 2025
-      </p>
+    <header id="header">
+      <h1>EasyTunnel — Study Wind Tunnel Calculator</h1>
     </header>
 
-    <hr>
+    <div id="body-row">
 
-    <section id="overview">
-      <h2>Overview</h2>
+      <aside id="sidebar">
+        <strong>EasyTunnel</strong>
 
-      <p>
-        This tool implements a simplified, physically consistent method for preliminary sizing of open-circuit,
-        low-speed wind tunnels. All tunnel sections are defined relative to the test section, which acts as the
-        reference for flow conditions, loss coefficients, and power scaling.
-      </p>
+        <div class="sidebar-logo">
+          <img src="images/easytunnel-symbol-text.png" alt="EasyTunnel logo">
+        </div>
 
-      <p>
-        For a specified test-section Mach number and geometry, the method propagates flow conditions upstream and
-        downstream through the contraction and diffuser. Section-by-section losses are computed using empirical
-        correlations from the wind tunnel design literature and combined into a single total loss coefficient.
-      </p>
+        <ul>
+          <li><a href="#overview">Overview</a></li>
+          <li><a href="#status">Tool Status</a></li>
+          <li><a href="#why">Why I Made It</a></li>
+          <li><a href="#method">Method</a></li>
+          <li><a href="#inputs">Inputs</a></li>
+          <li><a href="#outputs">Outputs</a></li>
+          <li><a href="#limitations">Limitations</a></li>
+          <li><a href="https://harpz111.github.io/hamza-personal-site/" target="_blank" rel="noopener">Personal Site</a></li>
+        </ul>
 
-      <p>
-        The total loss coefficient defines an energy ratio which links test-section dynamic pressure to overall tunnel
-        pressure losses. This enables a consistent estimate of required fan/motor power for a given test-section
-        condition.
-      </p>
+        <div class="sidebar-box">
+          <p><strong>Reference</strong></p>
+          <p><em>Low-Speed Wind Tunnel Testing</em><br>Barlow, Rae and Pope</p>
+        </div>
+      </aside>
 
-      <p>
-        <a href="Notes-on-EasyTunnel.pdf" download>Read methodology notes (PDF)</a>
-      </p>
-    </section>
+      <main id="content">
 
-    <hr>
+        <div class="breadcrumb">EasyTunnel &gt; Overview</div>
 
-    <section id="method">
-      <h2>Method</h2>
+        <section id="overview">
+          <h2>Overview</h2>
 
-      <p>
-        The tunnel is modelled as three primary sections:
-      </p>
+          <p>
+            <em>EasyTunnel</em> is a preliminary sizing calculator for low-speed open-circuit wind tunnels.
+            It is intended for study, early feasibility work, and quick design iteration.
+          </p>
 
-      <ul>
-        <li>Contraction</li>
-        <li>Test section</li>
-        <li>Diffuser</li>
-      </ul>
+          <p>
+            The calculator starts from the test section because that is where the useful flow condition is defined.
+            From the test-section size and target speed, the tool estimates section velocities, Reynolds number,
+            pressure losses, and approximate power requirement.
+          </p>
 
-      <p>
-        For each section, the local Mach number, Reynolds number, and Darcy friction factor are evaluated from the
-        local cross-sectional area and length. Loss coefficients for the contraction, test section, and diffuser are
-        then computed using established empirical correlations. All losses are referenced to the test-section dynamic
-        pressure and summed into a single total loss coefficient for the tunnel.
-      </p>
+          <p>
+            The method follows the low-speed wind tunnel design approach set out in
+            <em>Low-Speed Wind Tunnel Testing</em> by Barlow, Rae and Pope, adapted into a transparent study tool.
+          </p>
+        </section>
 
-      <p>
-        The energy ratio is defined as the inverse of the total loss coefficient and is used to estimate total pressure
-        drop and motor power required to achieve the specified test-section conditions.
-      </p>
-    </section>
+        <hr>
 
-    <hr>
+        <section id="status">
+          <h2>Tool status</h2>
 
-    <section id="assumptions">
-      <h2>Model assumptions</h2>
+          <p>
+            The updated EasyTunnel calculator is still being prepared for distribution. For now, this page records
+            the purpose, method, inputs, outputs, and assumptions behind the tool.
+          </p>
 
-      <ul>
-        <li>Low-speed, open-circuit configuration (subsonic; intended for modest Mach numbers).</li>
-        <li>Losses are referenced to test-section dynamic pressure for consistent summation.</li>
-        <li>Friction factors and loss correlations are empirical and represent engineering approximations.</li>
-        <li>Steady flow assumption; does not model unsteady effects, fan curves, or acoustics.</li>
-      </ul>
-    </section>
+          <p>
+            <a class="button secondary" href="Notes-on-EasyTunnel.pdf">Open methodology notes</a>
+          </p>
+        </section>
 
-    <hr>
+        <hr>
 
-    <section id="use">
-      <h2>Intended use</h2>
+        <section id="why">
+          <h2>Why I made it</h2>
 
-      <p>
-        This tool is intended for rough preliminary sizing only. It is suitable for early-stage feasibility studies,
-        comparison of candidate tunnel geometries, and estimation of overall tunnel length/footprint and
-        order-of-magnitude fan power requirements.
-      </p>
+          <p>
+            Early wind tunnel sizing can become awkward because the important quantities are coupled.
+            Test-section speed affects dynamic pressure. Area ratios change local velocity. Section losses
+            affect pressure drop, and pressure drop affects the motor power estimate.
+          </p>
 
-      <p>
-        It is aimed at students, hobbyists, and academic users who want a transparent sizing calculation based on common
-        wind tunnel design relations.
-      </p>
-    </section>
+          <p>
+            EasyTunnel keeps these relationships in one place. The goal is not to hide the method, but to make
+            the sizing logic visible enough that the user can see why the result changes.
+          </p>
+        </section>
 
-    <hr>
+        <hr>
 
-    <section id="limitations">
-      <h2>Limitations</h2>
+        <section id="method">
+          <h2>Method summary</h2>
 
-      <ul>
-        <li>Does not include screens/honeycombs, corners, inlet/exit losses, or facility-specific ducting effects.</li>
-        <li>Does not include fan performance curves, motor selection, noise, or structural constraints.</li>
-        <li>Boundary-layer blockage is treated using simplified correlations and should be checked for validity.</li>
-        <li>Not a substitute for detailed CFD, structural design, or experimental validation.</li>
-      </ul>
-    </section>
+          <h3>Reference test section</h3>
+          <p>
+            The test section is used as the reference section because it is where the target operating condition
+            matters most. Local quantities are related back to the test-section area and speed.
+          </p>
 
-    <hr>
+          <h3>Area-ratio scaling</h3>
+          <p>
+            For a preliminary low-speed calculation, continuity links area and velocity. A smaller area gives a
+            larger velocity, while a larger area gives a smaller velocity.
+          </p>
 
-    <section id="references">
-      <h2>References</h2>
+          <h3>Pressure loss and power</h3>
+          <p>
+            Each section is assigned an approximate loss coefficient. These losses are accumulated into a total
+            pressure-drop estimate, which is then combined with volume flow rate to estimate power.
+          </p>
+        </section>
 
-      <p>
-        The method is based on standard low-speed wind tunnel design texts and supporting technical reports, including
-        empirical loss correlations for contractions and diffusers. A full reference list will be provided once the tool
-        and accompanying documentation are finalised.
-      </p>
-    </section>
+        <hr>
 
-    <hr>
+        <section id="inputs">
+          <h2>Inputs</h2>
 
-    <section id="download" class="download">
-      <h2>Download</h2>
+          <div class="split-section">
+            <div>
+              <ul>
+                <li>Target test-section velocity or Mach number</li>
+                <li>Test-section width, height, and area</li>
+                <li>Contraction area ratio</li>
+                <li>Diffuser geometry and area ratio</li>
+                <li>Air density and viscosity assumptions</li>
+                <li>Approximate loss-coefficient assumptions</li>
+              </ul>
+            </div>
 
-      <p>
-        The calculator is distributed as a standalone Windows executable (packaged from Python).
-      </p>
+            <figure class="section-figure">
+              <img src="images/input.png" alt="EasyTunnel input screen">
+              <figcaption>Input panel used to define the wind tunnel operating condition and geometry.</figcaption>
+            </figure>
+          </div>
+        </section>
 
-      <p class="note">
-        <strong>Latest release:</strong>
-        <a href="https://github.com/harpz111/study-wind-tunnel-calculator/releases/download/v0.1/StudyWindTunnelCalculator.v.0.1.zip" download>Download (Windows)</a>
-        &nbsp;|&nbsp;
-        <a href="https://github.com/harpz111/study-wind-tunnel-calculator" target="_blank" rel="noopener">GitHub repository</a>
-      </p>
-    </section>
+        <hr>
 
-    <footer>
-      <hr>
-      <p>
-        © Study Wind Tunnel Calculator — preliminary sizing tool for educational and early-stage feasibility use.
-      </p>
-      <p>
-        Created by <a href="https://harpz111.github.io/hamza-personal-site/" target="_blank" rel="noopener">Hamza H</a>.
-      </p>
+        <section id="outputs">
+          <h2>Outputs</h2>
+
+          <div class="split-section">
+            <div>
+              <ul>
+                <li>Estimated local section velocities</li>
+                <li>Reynolds number estimate</li>
+                <li>Dynamic pressure estimate</li>
+                <li>Section and total pressure-loss estimates</li>
+                <li>Approximate fan or motor power requirement</li>
+              </ul>
+            </div>
+
+            <figure class="section-figure">
+              <img src="images/output.png" alt="EasyTunnel output screen">
+              <figcaption>Output panel showing estimated flow properties, losses, and power requirement.</figcaption>
+            </figure>
+          </div>
+        </section>
+
+        <hr>
+
+        <section id="limitations">
+          <h2>Limitations</h2>
+
+          <p>
+            EasyTunnel is an order-of-magnitude sizing tool. It does not replace detailed wind tunnel design,
+            fan selection, acoustic treatment, flow-quality assessment, structural design, or experimental validation.
+          </p>
+
+          <p>
+            The outputs should be treated as early design estimates, not final design values.
+          </p>
+        </section>
+
+      </main>
+    </div>
+
+    <footer id="footer-nav">
+      <a href="#overview">Overview</a>
+      <a href="#status">Status</a>
+      <a href="#method">Method</a>
+      <a href="#inputs">Inputs</a>
+      <a href="#outputs">Outputs</a>
+      <a href="https://harpz111.github.io/hamza-personal-site/" target="_blank" rel="noopener">Personal Site</a>
+      <a href="#top">Top</a>
     </footer>
-  </main>
+
+  </div>
 </body>
 </html>

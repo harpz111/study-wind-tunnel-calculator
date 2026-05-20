@@ -199,30 +199,29 @@ hr {
   background: #fff6a8;
 }
 
-.image-row {
+.split-section {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-  margin-top: 10px;
+  grid-template-columns: 1fr 300px;
+  gap: 18px;
+  align-items: start;
 }
 
-figure {
+.section-figure {
   margin: 0;
   padding: 6px;
   border: 1px solid #ccc;
   background: #fafafa;
 }
 
-figure img {
+.section-figure img {
   width: 100%;
-  min-height: 170px;
   display: block;
   object-fit: contain;
   background: #fff;
   border: 1px solid #e0e0e0;
 }
 
-figcaption {
+.section-figure figcaption {
   margin-top: 5px;
   color: var(--muted);
   font-size: 0.76rem;
@@ -281,7 +280,7 @@ figcaption {
     padding: 16px;
   }
 
-  .image-row {
+  .split-section {
     grid-template-columns: 1fr;
   }
 

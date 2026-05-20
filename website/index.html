@@ -3,49 +3,203 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Hamza H</title>
+  <title>EasyTunnel — Study Wind Tunnel Calculator</title>
+  <meta name="description" content="EasyTunnel is a preliminary sizing calculator for low-speed open-circuit wind tunnels.">
   <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-  <div class="topnav" role="navigation" aria-label="Main navigation">
-    <div class="topnav-inner">
-      <a href="#home">Home</a>
-      <a href="#about">About</a>
-      <a href="#cfd">CFD Notes</a>
-      <a href="easytunnel.html">EasyTunnel</a>
-    </div>
-  </div>
+  <div id="site">
 
-  <main>
-    <header id="home">
-      <h1>Hamza H</h1>
-      <p class="subtitle">Aerospace engineering, CFD, and technical notes.</p>
+    <header id="header">
+      <h1>EasyTunnel — Study Wind Tunnel Calculator</h1>
     </header>
 
-    <hr>
+    <div id="body-row">
 
-    <section id="about">
-      <h2>About</h2>
-      <p>
-        I am interested in aerospace engineering, fluid mechanics, computational fluid dynamics,
-        and numerical methods. This site is a place to keep notes and work in one place.
-      </p>
-    </section>
+      <aside id="sidebar" aria-label="EasyTunnel navigation">
+        <strong>EasyTunnel</strong>
 
-    <hr>
+        <div class="sidebar-logo">
+          <!-- Put your logo at: website/images/easytunnel-symbol-text.png -->
+          <img src="images/easytunnel-symbol-text.png" alt="EasyTunnel logo">
+        </div>
 
-    <section id="cfd">
-      <h2>CFD Notes</h2>
-      <p>
-        <a href="cfd-notes.html">Open CFD Notes</a>
-      </p>
-    </section>
+        <ul>
+          <li><a href="#overview">Overview</a></li>
+          <li><a href="#tool">Go to Tool</a></li>
+          <li><a href="#why">Why I Made It</a></li>
+          <li><a href="#method">Method</a></li>
+          <li><a href="#inputs">Inputs</a></li>
+          <li><a href="#outputs">Outputs</a></li>
+          <li><a href="#notes">Notes</a></li>
+          <li><a href="#limitations">Limitations</a></li>
+        </ul>
 
-    <footer>
-      <hr>
-      <p>© Hamza H</p>
+        <div class="sidebar-box">
+          <p><strong>Reference</strong></p>
+          <p><em>Low-Speed Wind Tunnel Testing</em><br>Barlow, Rae and Pope</p>
+        </div>
+      </aside>
+
+      <main id="content">
+
+        <div class="breadcrumb">EasyTunnel &gt; Overview</div>
+
+        <section id="overview">
+          <h2>Overview</h2>
+          <p>
+            <em>EasyTunnel</em> is a preliminary sizing calculator for low-speed open-circuit wind tunnels.
+            It is intended for study, early feasibility work, and quick design iteration.
+          </p>
+          <p>
+            The calculator starts from the test section because that is where the useful flow condition is defined.
+            From the test-section size and target speed, the tool estimates section velocities, Reynolds number,
+            pressure losses, and approximate power requirement.
+          </p>
+          <p>
+            The method follows the low-speed wind tunnel design approach set out in
+            <em>Low-Speed Wind Tunnel Testing</em> by Barlow, Rae and Pope, adapted into a transparent study tool.
+          </p>
+        </section>
+
+        <hr>
+
+        <section id="tool">
+          <h2>Go to EasyTunnel Website</h2>
+          <p>
+            <a class="button" href="easytunnel.html">Open EasyTunnel Calculator</a>
+            <a class="button secondary" href="Notes-on-EasyTunnel.pdf">Open methodology notes</a>
+          </p>
+          <p class="small">
+            These links assume <code>easytunnel.html</code> and <code>Notes-on-EasyTunnel.pdf</code>
+            are in the same GitHub <code>website</code> folder as this page.
+          </p>
+        </section>
+
+        <hr>
+
+        <section id="why">
+          <h2>Why I made it</h2>
+          <p>
+            Early wind tunnel sizing can become awkward because the important quantities are coupled.
+            Test-section speed affects dynamic pressure. Area ratios change local velocity. Section losses
+            affect pressure drop, and pressure drop affects the motor power estimate.
+          </p>
+          <p>
+            EasyTunnel keeps these relationships in one place. The goal is not to hide the method, but to make
+            the sizing logic visible enough that the user can see why the result changes.
+          </p>
+        </section>
+
+        <hr>
+
+        <section id="method">
+          <h2>Method summary</h2>
+
+          <h3>Reference test section</h3>
+          <p>
+            The test section is used as the reference section because it is where the target operating condition
+            matters most. Local quantities are related back to the test-section area and speed.
+          </p>
+
+          <h3>Area-ratio scaling</h3>
+          <p>
+            For a preliminary low-speed calculation, continuity links area and velocity. A smaller area gives a
+            larger velocity, while a larger area gives a smaller velocity.
+          </p>
+
+          <h3>Pressure loss and power</h3>
+          <p>
+            Each section is assigned an approximate loss coefficient. These losses are accumulated into a total
+            pressure-drop estimate, which is then combined with volume flow rate to estimate power.
+          </p>
+        </section>
+
+        <hr>
+
+        <section id="inputs">
+          <h2>Inputs</h2>
+          <ul>
+            <li>Target test-section velocity or Mach number</li>
+            <li>Test-section width, height, and area</li>
+            <li>Contraction area ratio</li>
+            <li>Diffuser geometry and area ratio</li>
+            <li>Air density and viscosity assumptions</li>
+            <li>Approximate loss-coefficient assumptions</li>
+          </ul>
+        </section>
+
+        <hr>
+
+        <section id="outputs">
+          <h2>Outputs</h2>
+          <ul>
+            <li>Estimated local section velocities</li>
+            <li>Reynolds number estimate</li>
+            <li>Dynamic pressure estimate</li>
+            <li>Section and total pressure-loss estimates</li>
+            <li>Approximate fan or motor power requirement</li>
+          </ul>
+        </section>
+
+        <hr>
+
+        <section id="images">
+          <h2>Images</h2>
+          <p>
+            Put screenshots or diagrams in the <code>images</code> folder and update the filenames below.
+          </p>
+
+          <div class="image-row">
+            <figure>
+              <img src="images/easytunnel-screenshot.png" alt="Screenshot of the EasyTunnel calculator">
+              <figcaption>Calculator screenshot. File path: <code>images/easytunnel-screenshot.png</code></figcaption>
+            </figure>
+
+            <figure>
+              <img src="images/tunnel-layout.png" alt="Open-circuit wind tunnel layout diagram">
+              <figcaption>Wind tunnel layout diagram. File path: <code>images/tunnel-layout.png</code></figcaption>
+            </figure>
+          </div>
+        </section>
+
+        <hr>
+
+        <section id="notes">
+          <h2>Notes</h2>
+          <p>
+            The methodology notes describe the assumptions, equations, and intended scope of the calculator.
+          </p>
+          <p>
+            <a href="Notes-on-EasyTunnel.pdf">Open Notes-on-EasyTunnel.pdf</a>
+          </p>
+        </section>
+
+        <hr>
+
+        <section id="limitations">
+          <h2>Limitations</h2>
+          <p>
+            EasyTunnel is an order-of-magnitude sizing tool. It does not replace detailed wind tunnel design,
+            fan selection, acoustic treatment, flow-quality assessment, structural design, or experimental validation.
+          </p>
+          <p>
+            The outputs should be treated as early design estimates, not final design values.
+          </p>
+        </section>
+
+      </main>
+    </div>
+
+    <footer id="footer-nav">
+      <a href="#overview">Overview</a>
+      <a href="#tool">Tool</a>
+      <a href="#method">Method</a>
+      <a href="#notes">Notes</a>
+      <a href="#top">Top</a>
     </footer>
-  </main>
+
+  </div>
 </body>
 </html>

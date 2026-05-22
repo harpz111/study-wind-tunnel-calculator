@@ -30,20 +30,21 @@
         </div>
 
         <ul>
-<ul>
-  <li><a href="#overview">Overview</a></li>
-  <li><a href="#download">Download</a></li>
-  <li><a href="#status">Tool Status</a></li>
+          <li><a href="#overview">Overview</a></li>
+          <li><a href="#download">Download</a></li>
+          <li><a href="#status">Tool Status</a></li>
           <li><a href="#why">Why I Made It</a></li>
           <li><a href="#method">Method</a></li>
+          <li><a href="#design-rationale">Design Rationale</a></li>
           <li><a href="#inputs">Inputs</a></li>
           <li><a href="#outputs">Outputs</a></li>
           <li><a href="#limitations">Limitations</a></li>
+          <li><a href="#references">References</a></li>
           <li><a href="https://harpz111.github.io/hamza-personal-site/" target="_blank" rel="noopener">Personal Site</a></li>
         </ul>
 
         <div class="sidebar-box">
-          <p><strong>Reference</strong></p>
+          <p><strong>Core reference</strong></p>
           <p><em>Low-Speed Wind Tunnel Testing</em><br>Barlow, Rae and Pope</p>
         </div>
       </aside>
@@ -63,63 +64,65 @@
           <p>
             The calculator starts from the test section because that is where the useful flow condition is defined.
             From the test-section size and target speed, the tool estimates section velocities, Reynolds number,
-            pressure losses, and approximate power requirement.
+            pressure losses, boundary-layer blockage, energy ratio, and approximate motor power requirement.
           </p>
 
           <p>
             The method follows the low-speed wind tunnel design approach set out in
             <em>Low-Speed Wind Tunnel Testing</em> by Barlow, Rae and Pope, adapted into a transparent study tool.
+            Additional design choices are explained below so that the user can see why the simplified geometry and
+            validity checks have been selected.
           </p>
         </section>
 
         <hr>
 
-       <section id="download">
-  <h2>Download EasyTunnel</h2>
+        <section id="download">
+          <h2>Download EasyTunnel</h2>
 
-  <p>
-    EasyTunnel is available as a Windows installer. The installer adds EasyTunnel to Windows,
-    creates an uninstaller, and gives the option to create a desktop shortcut during setup.
-  </p>
+          <p>
+            EasyTunnel is available as a Windows installer. The installer adds EasyTunnel to Windows,
+            creates an uninstaller, and gives the option to create a desktop shortcut during setup.
+          </p>
 
-  <p>
-    <a class="button" href="https://github.com/harpz111/study-wind-tunnel-calculator/releases/download/v0.2.8/EasyTunnel_Setup_v0.2.8.exe">
-      Download EasyTunnel for Windows
-    </a>
+          <p>
+            <a class="button" href="https://github.com/harpz111/study-wind-tunnel-calculator/releases/download/v0.2.8/EasyTunnel_Setup_v0.2.8.exe">
+              Download EasyTunnel for Windows
+            </a>
 
-    <a class="button secondary" href="Notes-on-EasyTunnel.pdf">
-      Open methodology notes
-    </a>
-  </p>
+            <a class="button secondary" href="Notes-on-EasyTunnel.pdf">
+              Open methodology notes
+            </a>
+          </p>
 
-  <p>
-    <small>
-      Current version: EasyTunnel v0.2.8. Windows may show a security warning because this early release is not code-signed.
-    </small>
-  </p>
-</section>
+          <p>
+            <small>
+              Current version: EasyTunnel v0.2.8. Windows may show a security warning because this early release is not code-signed.
+            </small>
+          </p>
+        </section>
 
-<hr>
+        <hr>
 
-<section id="status">
-  <h2>Tool status</h2>
+        <section id="status">
+          <h2>Tool status</h2>
 
-  <p>
-    EasyTunnel currently supports preliminary sizing for open-circuit, low-speed wind tunnels with
-    rectangular contraction, test section, and diffuser sections.
-  </p>
+          <p>
+            EasyTunnel currently supports preliminary sizing for open-circuit, low-speed wind tunnels with
+            rectangular contraction, test section, and diffuser sections.
+          </p>
 
-  <p>
-    The current version includes section-by-section loss estimates, motor power estimation,
-    boundary-layer blockage checking, PDF design report export, and a design-envelope explorer
-    for comparing feasible candidate geometries.
-  </p>
+          <p>
+            The current version includes section-by-section loss estimates, motor power estimation,
+            boundary-layer blockage checking, PDF design report export, and a design-envelope explorer
+            for comparing feasible candidate geometries.
+          </p>
 
-  <p>
-    The tool is still under active development. It does not yet include fan curve matching,
-    settling chamber screens, honeycomb losses, acoustic treatment, structural design, or full CFD validation.
-  </p>
-</section>
+          <p>
+            The tool is still under active development. It does not yet include fan curve matching,
+            settling chamber screens, honeycomb losses, acoustic treatment, structural design, or full CFD validation.
+          </p>
+        </section>
 
         <hr>
 
@@ -146,19 +149,107 @@
           <h3>Reference test section</h3>
           <p>
             The test section is used as the reference section because it is where the target operating condition
-            matters most. Local quantities are related back to the test-section area and speed.
+            matters most. The user specifies the target test-section Mach number, and EasyTunnel calculates the
+            corresponding velocity from the local speed of sound. The resulting Reynolds number is then reported
+            as an output rather than forced to match a full-scale condition.
+          </p>
+
+          <p>
+            This is deliberate. For small educational tunnels, matching both Mach number and Reynolds number can
+            require very high flow speeds, pressurised operation, a very large tunnel, or an impractically small
+            model chord. EasyTunnel therefore treats the Mach number or test-section speed as the main operating
+            input, then reports the Reynolds number produced by the selected geometry.
           </p>
 
           <h3>Area-ratio scaling</h3>
           <p>
             For a preliminary low-speed calculation, continuity links area and velocity. A smaller area gives a
-            larger velocity, while a larger area gives a smaller velocity.
+            larger velocity, while a larger area gives a smaller velocity. The tool uses the test-section area as
+            the reference area, then estimates average section quantities for the contraction and diffuser.
           </p>
 
           <h3>Pressure loss and power</h3>
           <p>
             Each section is assigned an approximate loss coefficient. These losses are accumulated into a total
-            pressure-drop estimate, which is then combined with volume flow rate to estimate power.
+            pressure-drop estimate, which is then combined with volume flow rate to estimate motor power.
+          </p>
+
+          <p>
+            Total-pressure loss is used because it represents the loss of useful mechanical energy in the flow.
+            Reductions in total pressure are associated with viscous dissipation, boundary-layer growth, turbulence,
+            expansion losses, and other irreversible effects. This is why EasyTunnel reports loss coefficients,
+            energy ratio, and approximate motor power rather than only reporting the geometry.
+          </p>
+        </section>
+
+        <hr>
+
+        <section id="design-rationale">
+          <h2>Design rationale and reference basis</h2>
+
+          <h3>Rectangular and square sections</h3>
+          <p>
+            The present version assumes a rectangular test section and square inlet/outlet reference sections.
+            This keeps the tool suitable for student-scale and laboratory-scale tunnels, where rectangular
+            construction is common and convenient for model mounting, optical access, and simple fabrication.
+          </p>
+
+          <p>
+            This assumption is also consistent with the development notes consulted for the tool. Göv (2021)
+            compared square and circular sectioned low-speed wind tunnel performance and reported comparable
+            turbulence intensities, supporting the use of a square or rectangular section for preliminary
+            low-speed studies.
+          </p>
+
+          <h3>Contraction length</h3>
+          <p>
+            EasyTunnel currently sets the contraction length using the simplified relation
+            <strong>Z<sub>c</sub> = X<sub>c,i</sub></strong>, where <strong>X<sub>c,i</sub></strong> is the square
+            contraction inlet width. For a square inlet, the inlet hydraulic radius may be interpreted as roughly
+            half the inlet width. This means <strong>Z<sub>c</sub> = X<sub>c,i</sub></strong> corresponds to an
+            approximate contraction length of <strong>L ≈ 2R<sub>i</sub></strong>.
+          </p>
+
+          <p>
+            This choice is included because contraction length is a compromise. A contraction that is too short
+            can produce poor outlet uniformity, while a contraction that is unnecessarily long increases wall
+            boundary-layer growth, friction, cost, and space requirement. Seyhun Durmuş, in
+            <em>Optimization of contraction cone length in an open-circuit wind tunnel</em>, found that
+            <strong>L = R<sub>i</sub></strong> did not produce uniform outlet flow, while
+            <strong>L = 2R<sub>i</sub></strong>, <strong>3R<sub>i</sub></strong>, and
+            <strong>3.5R<sub>i</sub></strong> did. The same notes identify
+            <strong>L ≈ 2R<sub>i</sub></strong> as the best compromise between boundary-layer thickness and
+            outlet-flow uniformity.
+          </p>
+
+          <p>
+            Mikhail (1979) is also used as background support for choosing contraction lengths in the region of
+            approximately <strong>2–2.5R<sub>i</sub></strong>. EasyTunnel does not yet model the detailed contraction
+            wall profile, so this should be understood as a simplified length rule for early sizing rather than a
+            complete contraction-design method.
+          </p>
+
+          <h3>Boundary-layer blockage check</h3>
+          <p>
+            EasyTunnel estimates the wall boundary-layer blockage in the test section because the boundary layer
+            reduces the effective core-flow area. The present methodology estimates the boundary-layer area and
+            compares it with the test-section area. Designs are flagged when the blockage estimate exceeds
+            <strong>BL ≤ 0.07</strong>.
+          </p>
+
+          <p>
+            This is a screening check, not a final flow-quality validation. A complete wind tunnel design would
+            also need model blockage assessment, wall-interference correction, turbulence-intensity measurement,
+            fan selection, flow conditioning, and experimental calibration.
+          </p>
+
+          <h3>Design-envelope explorer</h3>
+          <p>
+            The default values in EasyTunnel should be treated as starting points rather than universal optimum
+            values. The Design Envelope Explorer is included so that the user can vary contraction ratio,
+            diffuser area ratio, and diffuser half-angle, then compare feasible candidate geometries by motor
+            power, total length, loss coefficient, and blockage. This makes the tool more useful for teaching
+            design trade-offs rather than simply returning one fixed result.
           </p>
         </section>
 
@@ -170,7 +261,7 @@
           <div class="split-section">
             <div>
               <ul>
-                <li>Target test-section velocity or Mach number</li>
+                <li>Target test-section Mach number</li>
                 <li>Test-section width, height, and area</li>
                 <li>Contraction area ratio</li>
                 <li>Diffuser geometry and area ratio</li>
@@ -198,7 +289,10 @@
                 <li>Reynolds number estimate</li>
                 <li>Dynamic pressure estimate</li>
                 <li>Section and total pressure-loss estimates</li>
+                <li>Boundary-layer blockage check</li>
                 <li>Approximate fan or motor power requirement</li>
+                <li>PDF design report export</li>
+                <li>Design-envelope explorer ranking table</li>
               </ul>
             </div>
 
@@ -220,20 +314,45 @@
           </p>
 
           <p>
-            The outputs should be treated as early design estimates, not final design values.
+            The current model does not include settling chamber screens, honeycomb losses, fan-curve matching,
+            inlet/exit losses, acoustic treatment, or detailed contraction-wall profiling. The outputs should be
+            treated as early design estimates, not final design values.
           </p>
+        </section>
+
+        <hr>
+
+        <section id="references">
+          <h2>References and source basis</h2>
+
+          <p>
+            EasyTunnel is an educational implementation of simplified low-speed wind tunnel sizing relations.
+            The full derivation and formulae are given in the methodology notes linked above. The following
+            references are used as the source basis for the public explanation and current design assumptions.
+          </p>
+
+          <ul>
+            <li>Barlow, J. B., Rae, W. H. and Pope, A. <em>Low-Speed Wind Tunnel Testing</em>. Core wind tunnel design and loss-modelling reference.</li>
+            <li>Durmuş, S. <em>Optimization of contraction cone length in an open-circuit wind tunnel</em>. Used to justify the simplified contraction length choice of approximately L ≈ 2R<sub>i</sub>.</li>
+            <li>Göv, I. (2021). <em>Comparison of Square and Circular Sectioned Wind Tunnel Performance</em>. Used as support for square/rectangular low-speed test-section assumptions.</li>
+            <li>Mikhail, M. N. (1979). “Optimum design of wind tunnel contractions”, <em>AIAA Journal</em>, 17(5), pp. 471–477. Used as background support for practical contraction length ranges.</li>
+            <li>Anderson, J. D. <em>Fundamentals of Aerodynamics</em>. Used as background for interpreting total-pressure loss as a measure of useful mechanical energy loss in the flow.</li>
+            <li>NASA NTRS low-speed aerodynamic and wind tunnel reports consulted during development for comparison cases and section-loss data.</li>
+          </ul>
         </section>
 
       </main>
     </div>
 
-   <footer id="footer-nav">
-  <a href="#overview">Overview</a>
-  <a href="#download">Download</a>
-  <a href="#status">Status</a>
+    <footer id="footer-nav">
+      <a href="#overview">Overview</a>
+      <a href="#download">Download</a>
+      <a href="#status">Status</a>
       <a href="#method">Method</a>
+      <a href="#design-rationale">Rationale</a>
       <a href="#inputs">Inputs</a>
       <a href="#outputs">Outputs</a>
+      <a href="#references">References</a>
       <a href="https://harpz111.github.io/hamza-personal-site/" target="_blank" rel="noopener">Personal Site</a>
       <a href="#top">Top</a>
     </footer>

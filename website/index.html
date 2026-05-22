@@ -30,8 +30,10 @@
         </div>
 
         <ul>
-          <li><a href="#overview">Overview</a></li>
-          <li><a href="#status">Tool Status</a></li>
+<ul>
+  <li><a href="#overview">Overview</a></li>
+  <li><a href="#download">Download</a></li>
+  <li><a href="#status">Tool Status</a></li>
           <li><a href="#why">Why I Made It</a></li>
           <li><a href="#method">Method</a></li>
           <li><a href="#inputs">Inputs</a></li>
@@ -72,18 +74,52 @@
 
         <hr>
 
-        <section id="status">
-          <h2>Tool status</h2>
+       <section id="download">
+  <h2>Download EasyTunnel</h2>
 
-          <p>
-            The updated EasyTunnel calculator is still being prepared for distribution. For now, this page records
-            the purpose, method, inputs, outputs, and assumptions behind the tool.
-          </p>
+  <p>
+    EasyTunnel is available as a Windows installer. The installer adds EasyTunnel to Windows,
+    creates an uninstaller, and gives the option to create a desktop shortcut during setup.
+  </p>
 
-          <p>
-            <a class="button secondary" href="Notes-on-EasyTunnel.pdf">Open methodology notes</a>
-          </p>
-        </section>
+  <p>
+    <a class="button" href="https://github.com/harpz111/study-wind-tunnel-calculator/releases/download/v0.2.8/EasyTunnel_Setup_v0.2.8.exe">
+      Download EasyTunnel for Windows
+    </a>
+
+    <a class="button secondary" href="Notes-on-EasyTunnel.pdf">
+      Open methodology notes
+    </a>
+  </p>
+
+  <p>
+    <small>
+      Current version: EasyTunnel v0.2.8. Windows may show a security warning because this early release is not code-signed.
+    </small>
+  </p>
+</section>
+
+<hr>
+
+<section id="status">
+  <h2>Tool status</h2>
+
+  <p>
+    EasyTunnel currently supports preliminary sizing for open-circuit, low-speed wind tunnels with
+    rectangular contraction, test section, and diffuser sections.
+  </p>
+
+  <p>
+    The current version includes section-by-section loss estimates, motor power estimation,
+    boundary-layer blockage checking, PDF design report export, and a design-envelope explorer
+    for comparing feasible candidate geometries.
+  </p>
+
+  <p>
+    The tool is still under active development. It does not yet include fan curve matching,
+    settling chamber screens, honeycomb losses, acoustic treatment, structural design, or full CFD validation.
+  </p>
+</section>
 
         <hr>
 
@@ -191,9 +227,10 @@
       </main>
     </div>
 
-    <footer id="footer-nav">
-      <a href="#overview">Overview</a>
-      <a href="#status">Status</a>
+   <footer id="footer-nav">
+  <a href="#overview">Overview</a>
+  <a href="#download">Download</a>
+  <a href="#status">Status</a>
       <a href="#method">Method</a>
       <a href="#inputs">Inputs</a>
       <a href="#outputs">Outputs</a>
